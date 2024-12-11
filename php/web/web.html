@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game đoán số</title>
+    <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+            background-color: antiquewhite;
+            color: rgb(15, 9, 1);
+          text-align: center;
+        }
+        header{
+            background: antiquewhite;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            
+        }
+        .container
+        {
+            margin-top: 50px;
+        }
+        input
+        {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Chào mừng đến với Game Đoán Số!</h1>
+    <img src="cccccc.jpg" alt="">
+    <div class="container">
+        <p>Đoán một số từ 1 đến 100</p>
+        <input type="number" id="guess" placeholder="Nhập số của bạn">
+        <button onclick="checkGuess()">Đoán</button>
+        <div class="message" id="message"></div>
+    </div>
+    <script>
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let attempts = 0;
+
+        function checkGuess() {
+            const userGuess = parseInt(document.getElementById('guess').value);
+            const messageElement = document.getElementById('message');
+            attempts++;
+
+            if (userGuess === randomNumber) {
+                messageElement.textContent = `Chúc mừng! Bạn đã đoán đúng số sau ${attempts} lần thử.`;
+                messageElement.style.color = 'green';
+            } else if (userGuess > randomNumber) {
+                messageElement.textContent = "Số bạn đoán quá lớn. Thử lại nhé!";
+                messageElement.style.color = 'red';
+            } else if (userGuess < randomNumber) {
+                messageElement.textContent = "Số bạn đoán quá nhỏ. Thử lại nhé!";
+                messageElement.style.color = 'red';
+            } else {
+                messageElement.textContent = "Vui lòng nhập một số hợp lệ!";
+                messageElement.style.color = 'orange';
+            }
+        }
+    </script>
+
+    
+</body>
+</html>
